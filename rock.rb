@@ -1,20 +1,11 @@
 
-# 何本勝負かを選択できる。
-# 1, 3, 5, ユーザーがこの数値からどれかを選べば該当するactionに移動する。
-# それ以外の入力は無視。
-# 回数はdef じゃんけんをtimesメゾットで行う。
-
-
-
-
-
-# CPUが出す手
-
-# じゃんけんでお互いが出した手を表示
+# 勝敗回数を記録
 @result = [0, 0]
+
+# じゃんけん本体
 def jyanken
     def battle
-        
+        # お互いの手
         cards = ["g", "c", "p"]
         cpu = cards.sample
         puts "じゃんけん（g, c, pから選択してください）"
@@ -22,6 +13,7 @@ def jyanken
         puts "CPU #{cpu}"
         puts "あなた #{user}"
     
+        # 勝敗
         if user == cpu
             puts "あいこ"
             return true
@@ -38,13 +30,14 @@ def jyanken
         end
     end
     
+    # あいこ時の繰り返し処理
     next_game = true
     while next_game do
         next_game = battle
     end
 end
 
-
+# ゲームの進行と結果表示
 puts "何本勝負？(数字を入力してください 1 or 3 or 5)"
 num = gets.chomp
 puts "#{num}本勝負"
@@ -86,60 +79,3 @@ end
 
 
 
-
-# 出した手ごとに勝ち負け・あいこの設定
-
-
-
-
-
-
-
-
-# じゃんけん
-# ユーザーに g, c, pのどれかを選んでもらう。
-# こちらからはランダムで３つの内から１つ選ばれるようにする。
-# この２つの数値を変数に当てはめてそれぞれの状況によって勝ち負けを記録する。
-# p gならputs you win! + あなたの勝ち数にプラス１（勝ち数は変数resolut）に記録する。
-# あいこに関してはreturnで定義する。
-# 最終結果に関しては 勝ち数と負け数比べてif使ってputsの内容を変更する。
-
-
-
-
-
-
-
-
-
-# 何本勝負？(press 1 or 3 or 5)
-# 3本勝負を選びました
-
-# 1本目
-# じゃんけん…(press g or c or p)
-# CPU…パー
-# あなた…チョキ
-# 勝ち！
-# 1勝0敗
-
-# 2本目
-# じゃんけん…(press g or c or p)
-# CPU…パー
-# あなた…グー
-# 負け！
-# 1勝1敗
-
-# 3本目
-# じゃんけん…(press g or c or p)
-# CPU…パー
-# あなた…パー
-# あいこで...(press g or c or p)
-# CPU…パー
-# あなた…チョキ
-
-# 勝ち！
-# 2勝1敗
-
-
-# 結果
-# 2勝1敗であなたの勝ち
