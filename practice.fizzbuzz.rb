@@ -1,6 +1,6 @@
-number = ARGV[0].to_i + 1
-p number
+number = ARGV[0].to_i
 number.times do |x|
+  x += 1
   number += 1
   if x % 15 == 0
     puts "FizzBuzz!"
