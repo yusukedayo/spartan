@@ -1,4 +1,4 @@
-
+# 修正済み
 
 number = ARGV[0].to_i + 1
 p number
