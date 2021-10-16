@@ -2,8 +2,8 @@
 @result = [0, 0]
 
 def battle
-    # お互いの手
-    cards = ["g", "c", "p"]
+    #お互いの手
+    cards = ['g', 'c', 'p']
     cpu = cards.sample
     puts "じゃんけん（g, c, pから選択してください）"
     hands = {g: "グー", c:"チョキ", p:"パー"}
@@ -11,11 +11,11 @@ def battle
     puts "CPU… #{hands[cpu.to_sym]}"
     puts "あなた… #{hands[user.to_sym]}"
 
-    # 勝敗
+    #勝敗
     if user == cpu
         puts "あいこ"
         return true
-    elsif  (user == "グー" && cpu == "チョキ") || (user == "チョキ" && cpu == "パー") || (user == "パー" && cpu == "グー")
+    elsif  (user == 'g' && cpu == 'c') || (user == 'c' && cpu == 'p') || (user == 'p' && cpu == 'g')
         puts "あなたの勝ち"
         @result[0] += 1
         puts "#{@result[0]}勝#{@result[1]}敗"
@@ -28,13 +28,14 @@ def battle
     end
 end
 
-def jyanken
-    # あいこ時の繰り返し処理
-    next_game = true
-    while next_game do
-        next_game = battle
+
+# あいこ時の繰り返し処理
+def janken
+    loop do
+        break unless battle
     end
 end
+
 
 # ゲームの進行と結果表示
 puts "何本勝負？(数字を入力してください 1 or 3 or 5)"
@@ -43,7 +44,7 @@ case num
 when "1"
     puts "1本勝負を選びました。"
     1.times do
-        puts jyanken
+        puts janken
     end
     if @result[0] >= 1
         puts "結果 #{@result[0]}勝#{@result[1]}であなたの勝ち"
@@ -53,7 +54,7 @@ when "1"
 when "3"
     puts "3本勝負を選びました。"
     3.times do
-        puts jyanken
+        puts janken
     end
     if @result[0] >= 2
         puts "結果 #{@result[0]}勝#{@result[1]}であなたの勝ち"
@@ -64,7 +65,7 @@ when "3"
 when "5"
     puts "5本勝負を選びました。"
     5.times do
-        puts jyanken
+        puts janken
     end
     if @result[0] >= 3
         puts "結果 #{@result[0]}勝#{@result[1]}であなたの勝ち"
@@ -74,4 +75,3 @@ when "5"
 else
     puts "回数は1, 3, 5の中から選んでください。"
 end
-
